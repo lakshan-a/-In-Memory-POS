@@ -1,6 +1,4 @@
-/**
- * Save Customer
- * */
+//------------------------------ Save Customer----------------------------//
 $("#btnCSave").click(function () {
 
     // Create Object
@@ -23,9 +21,7 @@ $("#btnCSave").click(function () {
     loadAllCustomers();
 });
 
-/**
- * Clear Text Fields in +New Customer
- * */
+//-------------------------------- Clear Text Fields in +New Customer--------------------------//
 $("#btnClearC").click(function () {
     clearTextFieldsC();
 });
@@ -39,9 +35,7 @@ function clearTextFieldsC() {
     checkValidity(customerValidations);
 }
 
-/**
- * Search Customer
- * */
+//----------------------------------------------- Search Customer--------------------------------//
 $("#btnSearchCus").click(function () {
     var result = customers.find(({id}) => id === $("#searchCusId").val());
     console.log(result);
@@ -67,9 +61,7 @@ $("#btnSearchCus").click(function () {
     }
 });
 
-/**
- * Clear Input Field in Search Bar
- * */
+//------------------------------------Clear Input Field in Search Bar----------------------------------//
 $("#clearSearchCus").click(function () {
     searchCusId.value = '';
     clearCDTextFields();
@@ -77,9 +69,7 @@ $("#clearSearchCus").click(function () {
     loadAllCustomers();
 });
 
-/**
- * Auto Forces Input Field in Search Bar
- * */
+//---------------------------------------- Auto Forces Input Field in Search Bar------------------------------------//
 $('#searchCusId').keypress(function (event) {
     if (event.which === 13) {
         $('#btnSearchCus').focus();
@@ -91,9 +81,7 @@ $('#btnSearchCus').keypress(function (event) {
     }
 });
 
-/**
- * Update Customer
- * */
+//------------------------------------------------Update Customer------------------------------------//
 $("#bntUpdateCustomer").click(function () {
     let CustomerId = $("#searchCustomerId").val();
     let response2 = updateCustomers(CustomerId);
@@ -120,9 +108,7 @@ function updateCustomers(CustomerId) {
     }
 }
 
-/**
- * Clear Text Fields in Update Customer
- * */
+//--------------------------------------Clear Text Fields in Update Customer------------------------------------//
 $("#btnUclearC").click(function () {
     clearCUTextFields();
 });
@@ -134,18 +120,14 @@ function clearCUTextFields() {
     salaryUpdate.value = '';
 }
 
-/**
- * Delete Customer
- * */
+//-------------------------------------------------Delete Customer-----------------------------------//
 $("#btnDeleteCustomer").click(function () {
     let deleteID = $("#searchCIdDelete").val();
 
     yesNoAlertDelete(deleteID);
 });
 
-/**
- * Search Id Enter Pressed And Load TextFields
- * */
+//---------------------------------------- Search Id Enter Pressed And Load TextFields-------------------------------------//
 $("#searchCIdDelete").keyup(function (event) {
     if (event.keyCode === 13) {
         var result = customers.find(({id}) => id === $("#searchCIdDelete").val());
@@ -163,9 +145,7 @@ $("#searchCIdDelete").keyup(function (event) {
     }
 });
 
-/**
- * Clear Text Fields in Delete Customer
- * */
+//------------------------------------------Clear Text Fields in Delete Customer-------------------------------//
 $("#btnDclearC").click(function () {
     clearCDTextFields();
 });
@@ -177,16 +157,12 @@ function clearCDTextFields() {
     disabledSalaryDelete.value = '';
 }
 
-/**
- * View All Customers
- * */
+//----------------------------------------------- View All Customers-----------------------------------//
 $("#btnViewAllCustomer").click(function () {
     loadAllCustomers();
 });
 
-/**
- * Load All Customers
- * */
+//---------------------------------------------- Load All Customers----------------------------------------//
 function loadAllCustomers() {
 
     // Remove all the table body content before adding data
@@ -207,9 +183,7 @@ function loadAllCustomers() {
     loadAllCustomersForOption();
 }
 
-/**
- * Table Listener Click & Load To TextFields
- * */
+//----------------------------------------- Table Listener Click & Load To TextFields--------------------------------------//
 function blindClickEvents() {
     $("#customerTable>tr").click(function () {
         let id = $(this).children().eq(0).text();
@@ -230,9 +204,7 @@ function blindClickEvents() {
     });
 }
 
-/**
- * Table Listener Double Click & Remove
- * */
+//------------------------------------- Table Listener Double Click & Remove---------------------------------//
 function dblRowClickEventsCus() {
     $("#customerTable>tr").on('dblclick', function () {
         let deleteCusID = $(this).children().eq(0).text();
@@ -240,9 +212,7 @@ function dblRowClickEventsCus() {
     });
 }
 
-/**
- * Generate New Customer ID
- * */
+//------------------------------------------Generate New Customer ID----------------------------------//
 function generateCustomerID() {
     if (customers.length > 0) {
         let lastId = customers[customers.length - 1].id;
@@ -254,9 +224,7 @@ function generateCustomerID() {
     }
 }
 
-/**
- * Input Fields warnings in +New Customer
- * */
+//-----------------------------------------Input Fields warnings in +New Customer----------------------------------//
 $("#txtCustomerId").focus();
 const regExCusID = /^(C00-)[0-9]{3,4}$/;
 const regExCusName = /^[A-z ]{3,20}$/;
@@ -285,9 +253,7 @@ customerValidations.push({
     error: 'Customer Salary Pattern is Wrong : 100 or 100.00'
 });
 
-/**
- * Input Fields warnings in Update Customer
- * */
+//----------------------------------------Input Fields warnings in Update Customer------------------------------------//
 let customerValidationsUpdate = [];
 customerValidationsUpdate.push({
     reg: regExCusID,
@@ -310,9 +276,7 @@ customerValidationsUpdate.push({
     error: 'Customer Salary Pattern is Wrong : 100 or 100.00'
 });
 
-/**
- * Disable "Tab" Key in +New Customer
- * */
+//----------------------------------------Disable "Tab" Key in +New Customer--------------------------------//
 $("#txtCustomerId,#txtCustomerName,#txtCustomerAddress,#txtCustomerSalary").on('keydown', function (event) {
     if (event.key === "Tab") {
         event.preventDefault();
@@ -327,9 +291,7 @@ $("#txtCustomerId,#txtCustomerName,#txtCustomerAddress,#txtCustomerSalary").on('
     checkValidity(customerValidations);
 });
 
-/**
- * Enable "Enter" Key in +New Customer
- * */
+//----------------------------------------- Enable "Enter" Key in +New Customer--------------------------------//
 $("#txtCustomerId").on('keydown', function (event) {
     if (event.key === "Enter" && check(regExCusID, $("#txtCustomerId"))) {
         $("#txtCustomerName").focus();
@@ -358,9 +320,7 @@ $("#txtCustomerSalary").on('keydown', function (event) {
     }
 });
 
-/**
- * Disable Save Customer Button
- * */
+//---------------------------------------- Disable Save Customer Button-----------------------------------//
 function setButtonStateCS(value) {
     if (value > 0) {
         $("#btnCSave").attr('disabled', true);
@@ -369,9 +329,7 @@ function setButtonStateCS(value) {
     }
 }
 
-/**
- * Disable "Tab" Key in Update Customer
- * */
+//------------------------------------- Disable "Tab" Key in Update Customer----------------------------------//
 $("#searchCustomerId,#nameUpdate,#addressUpdate,#salaryUpdate").on('keydown', function (event) {
     if (event.key === "Tab") {
         event.preventDefault();
@@ -386,9 +344,7 @@ $("#searchCustomerId,#nameUpdate,#addressUpdate,#salaryUpdate").on('blur', funct
     checkValidity(customerValidationsUpdate);
 });
 
-/**
- * Enable "Enter" Key in Update Customer
- * */
+//---------------------------------Enable "Enter" Key in Update Customer-------------------------------------//
 $("#searchCustomerId").on('keydown', function (event) {
     if (event.key === "Enter" && check(regExCusID, $("#searchCustomerId"))) {
         $("#nameUpdate").focus();
@@ -417,9 +373,7 @@ $("#salaryUpdate").on('keydown', function (event) {
     }
 });
 
-/**
- * Disable Update Customer Button
- * */
+//----------------------------------- Disable Update Customer Button------------------------------//
 function setButtonStateCU(value) {
     if (value > 0) {
         $("#bntUpdateCustomer").attr('disabled', true);
