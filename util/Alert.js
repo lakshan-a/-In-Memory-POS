@@ -83,6 +83,7 @@ function yesNoAlertIDelete(value) {
         }
     });
 }
+
 function emptyMassage() {
     let timerInterval
     Swal.fire({
