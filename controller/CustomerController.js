@@ -313,9 +313,8 @@ $("#btnSearchCus").click(function () {
      checkValidity(customerValidations);
  });
 
- /**
-  * Enable "Enter" Key in +New Customer
-  * */
+ //-------------------Enable "Enter" Key in +New Customer--------------------//
+
  $("#txtCustomerId").on('keydown', function (event) {
      if (event.key === "Enter" && check(regExCusID, $("#txtCustomerId"))) {
          $("#txtCustomerName").focus();
@@ -344,9 +343,8 @@ $("#btnSearchCus").click(function () {
      }
  });
 
- /**
-  * Disable Save Customer Button
-  * */
+ //-------------------------Disable Save Customer Button----------------//
+
  function setButtonStateCS(value) {
      if (value > 0) {
          $("#btnCSave").attr('disabled', true);
@@ -355,9 +353,8 @@ $("#btnSearchCus").click(function () {
      }
  }
 
- /**
-  * Disable "Tab" Key in Update Customer
-  * */
+ //---------------------------------Disable "Tab" Key in Update Customer---------------------------//
+
  $("#searchCustomerId,#nameUpdate,#addressUpdate,#salaryUpdate").on('keydown', function (event) {
      if (event.key === "Tab") {
          event.preventDefault();
