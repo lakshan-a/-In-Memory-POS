@@ -64,3 +64,73 @@ $("#btnSearchCus").click(function () {
         clearCDTextFields();
     }
 });
+
+
+ //---------------------------------Clear Input Field in Search Bar------------------------//
+
+
+ $("#clearSearchCus").click(function () {
+     searchCusId.value = '';
+     clearCDTextFields();
+     clearCUTextFields();
+     loadAllCustomers();
+ });
+
+ //------------------------------Auto Forces Input Field in Search Bar---------------------------//
+
+
+ $('#searchCusId').keypress(function (event) {
+     if (event.which === 13) {
+         $('#btnSearchCus').focus();
+     }
+ });
+ $('#btnSearchCus').keypress(function (event) {
+     if (event.which === 13) {
+         $('#searchCusId').focus();
+     }
+ });
+
+ //----------------------------------Update Customer----------------------------------------//
+
+
+ $("#bntUpdateCustomer").click(function () {
+     let CustomerId = $("#searchCustomerId").val();
+     let response2 = updateCustomers(CustomerId);
+     if (response2) {
+         saveUpdateAlert(CustomerId, "updated.");
+         clearCUTextFields();
+         checkValidity(customerValidationsUpdate);
+     } else {
+         unSucsessUpdateAlert(CustomerId);
+     }
+ });
+
+ function updateCustomers(CustomerId) {
+     let customer = searchCustomer(CustomerId);
+     if (customer != null) {
+         customer.id = $("#searchCustomerId").val();
+         customer.name = $("#nameUpdate").val();
+         customer.address = $("#addressUpdate").val();
+         customer.salary = $("#salaryUpdate").val();
+         loadAllCustomers();
+         return true;
+     } else {
+         return false;
+     }
+ }
+
+ //-------------------------------- Clear Text Fields in Update Customer------------------------------//
+
+
+ $("#btnUclearC").click(function () {
+     clearCUTextFields();
+ });
+
+ function clearCUTextFields() {
+     searchCustomerId.value = '';
+     nameUpdate.value = '';
+     addressUpdate.value = '';
+     salaryUpdate.value = '';
+ }
+
+
