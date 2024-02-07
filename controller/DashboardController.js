@@ -20,3 +20,24 @@ $(document).ready(function () {
         $('#CustomerSection').css('display', 'block');
         $("#txtCustomerId").val(generateCustomerID());
     });
+
+    $('#itemBtn').click(function () {
+        hide_all_contents();
+        $('#ItemSection').css('display', 'block');
+        $("#txtItemsId").val(generateItemID());
+    });
+
+    $('#orderBtn').click(function () {
+        hide_all_contents();
+        $('#OrderSection').css('display', 'block');
+        $("#orderId").val(generateOrderID());
+        setCurrentDate();
+    });
+
+    $('#orderDetailsBtn').click(function () {
+        hide_all_contents();
+        $('#OrderDetails').css('display', 'block');
+        loadAllOrders();
+        loadAllOrderDetails();
+    });
+});
