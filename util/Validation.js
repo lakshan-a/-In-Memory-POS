@@ -13,3 +13,16 @@ function checkValidity(object) {
     setButtonStateIS(errorCount);
     setButtonStateIU(errorCount);
 }
+function check(regex, txtField) {
+    let inputValue = txtField.val();
+    return regex.test(inputValue) ? true : false;
+}
+
+function textSuccess(txtField, error) {
+    if (txtField.val().length <= 0) {
+        defaultText(txtField, "");
+    } else {
+        txtField.css('border', '2px solid green');
+        txtField.parent().children('span').text(error);
+    }
+}
