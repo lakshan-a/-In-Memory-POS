@@ -133,4 +133,70 @@ $("#btnSearchCus").click(function () {
      salaryUpdate.value = '';
  }
 
+ //-------------------------------------------Delete Customer--------------------------------------//
+ $("#btnDeleteCustomer").click(function () {
+     let deleteID = $("#searchCIdDelete").val();
+
+     yesNoAlertDelete(deleteID);
+ });
+
+ //-------------------------------Search Id Enter Pressed And Load TextFields-------------------------------//
+ $("#searchCIdDelete").keyup(function (event) {
+     if (event.keyCode === 13) {
+         var result = customers.find(({id}) => id === $("#searchCIdDelete").val());
+         console.log(result);
+
+         if (result != null) {
+             $("#searchCIdDelete").val(result.id);
+             $("#disabledNameDelete").val(result.name);
+             $("#disabledAddressDelete").val(result.address);
+             $("#disabledSalaryDelete").val(result.salary);
+         } else {
+             emptyMassage();
+             clearCDTextFields();
+         }
+     }
+ });
+
+ //---------------------------------------------- Clear Text Fields in Delete Customer---------------------------------//
+
+ $("#btnDclearC").click(function () {
+     clearCDTextFields();
+ });
+
+ function clearCDTextFields() {
+     searchCIdDelete.value = '';
+     disabledNameDelete.value = '';
+     disabledAddressDelete.value = '';
+     disabledSalaryDelete.value = '';
+ }
+
+ //--------------------------------------------- View All Customers-------------------------------------------//
+
+ $("#btnViewAllCustomer").click(function () {
+     loadAllCustomers();
+ });
+
+ //------------------------------- Load All Customers------------------------------------------//
+
+
+ function loadAllCustomers() {
+
+     // Remove all the table body content before adding data
+     $("#customerTable").empty();
+
+     // Get all customer records from the array
+     for (var customer of customers) {
+         console.log(customer);// customer object
+
+         // Using String Literals to do the same thing as above
+         var row = `<tr><td>${customer.id}</td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.salary}</td></tr>`;
+
+         //then add it to the table body of customer table
+         $("#customerTable").append(row);
+     }
+     blindClickEvents();
+     dblRowClickEventsCus();
+     loadAllCustomersForOption();
+ }
 
