@@ -96,7 +96,7 @@
     </div>
     <div class="container d-flex flex-grow-1 flex-column" style="background-color: #dfe4ea; border-radius: 10px 10px 10px 10px;">
         <div class="position-relative d-inline-block mt-3 mt-lg-4 mt-md-4">
-                        <h2 id="H1-1" style="font-family: Arial,serif">
+                        <h2 id="H6" style="font-family: Arial,serif">
                             <i class="fa-solid fa-users"></i> Customer</h2>
             <hr>
         </div>
@@ -273,6 +273,73 @@
         </div>
     </div>
 </div>
+
+
+<!==================== Items ====================>
+<main id="ItemSection" class="container-fluid">
+    <div class="container d-flex flex-grow-1 flex-column">
+        <div class="position-relative d-inline-block mt-3 mt-lg-4 mt-md-4">
+            <h2 id="H1-1" style="font-family: Arial">
+                <i class="fa-sharp fa-solid fa-computer"></i> Item
+            </h2>
+        </div>
+    </div>
+    <div class="container d-flex flex-grow-1 flex-column" style="background-color: #dfe4ea">
+        <div class="position-relative d-inline-block mt-3 mt-lg-4 mt-md-4">
+            <h6 id="H6-1">Home > Item</h6>
+            <hr>
+        </div>
+        <div class="row justify-content-around" style="height: max-content">
+            <div class="col-10 col-md-5 col-lg-4 p-0 mt-2" style="background-color: white">
+                <h4 class="text-center p-2 text-light" style="background: green">Search Item</h4>
+                <div class="mb-3 ms-3 me-3 ">
+                    <input class="form-control me-2" id="ItemIdSearch" placeholder="Input Name/Code/Tp Here"
+                           type="search">
+                </div>
+                <form>
+                    <button class="btn btn-primary ms-3 mb-3 ms-md-3 ms-lg-3 btn-success" id="btnSearchItem"
+                            type="button">Search
+                    </button>
+                    <button class="btn btn-warning ms-3 mb-3 ms-md-3 ms-lg-3" id="clearSearchItem" type="button">Clear
+                    </button>
+                </form>
+            </div>
+            <div class="col-10 col-md-5 col-lg-5 mt-2">
+                <button class="btn btn-primary mt-2 m-1" data-bs-target="#registerItem"
+                        data-bs-toggle="modal" id="btnAddItem" type="button">+ New Item
+                </button>
+
+                <button class="btn btn-warning mt-2 m-1" data-bs-target="#updateItem"
+                        data-bs-toggle="modal" type="button">Update Item
+                </button>
+
+                <button class="btn btn-danger mt-2 m-1" data-bs-target="#deleteItem"
+                        data-bs-toggle="modal" type="button">Delete Item
+                </button>
+
+                <button class="btn btn-success mt-2 m-1" id="btnViewAllItems" type="button">View All Items</button>
+            </div>
+        </div>
+        <div class="row mt-1 mt-md-2 mt-lg-5 justify-content-around" style="height: 250px">
+            <div class="col-10">
+                <div class="ItemTableDiv overflow-auto" style="height: 200px">
+                    <table class="table table-success table-striped table-bordered table-hover">
+                        <thead class="text-light table-dark text-center  table-bordered sticky-top">
+                        <tr>
+                            <th>Item Code</th>
+                            <th>Item Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody id="ItemTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
 
 
 
