@@ -313,4 +313,63 @@ $("#btnSearchCus").click(function () {
      checkValidity(customerValidations);
  });
 
+ /**
+  * Enable "Enter" Key in +New Customer
+  * */
+ $("#txtCustomerId").on('keydown', function (event) {
+     if (event.key === "Enter" && check(regExCusID, $("#txtCustomerId"))) {
+         $("#txtCustomerName").focus();
+     } else {
+         focusText($("#txtCustomerId"));
+     }
+ });
+
+ $("#txtCustomerName").on('keydown', function (event) {
+     if (event.key === "Enter" && check(regExCusName, $("#txtCustomerName"))) {
+         focusText($("#txtCustomerAddress"));
+     }
+ });
+
+ $("#txtCustomerAddress").on('keydown', function (event) {
+     if (event.key === "Enter" && check(regExCusAddress, $("#txtCustomerAddress"))) {
+         focusText($("#txtCustomerSalary"));
+     }
+ });
+
+ $("#txtCustomerSalary").on('keydown', function (event) {
+     if (event.key === "Enter" && check(regExSalary, $("#txtCustomerSalary"))) {
+         if (event.which === 13) {
+             $('#btnCSave').focus();
+         }
+     }
+ });
+
+ /**
+  * Disable Save Customer Button
+  * */
+ function setButtonStateCS(value) {
+     if (value > 0) {
+         $("#btnCSave").attr('disabled', true);
+     } else {
+         $("#btnCSave").attr('disabled', false);
+     }
+ }
+
+ /**
+  * Disable "Tab" Key in Update Customer
+  * */
+ $("#searchCustomerId,#nameUpdate,#addressUpdate,#salaryUpdate").on('keydown', function (event) {
+     if (event.key === "Tab") {
+         event.preventDefault();
+     }
+ });
+
+ $("#searchCustomerId,#nameUpdate,#addressUpdate,#salaryUpdate").on('keyup', function (event) {
+     checkValidity(customerValidationsUpdate);
+ });
+
+ $("#searchCustomerId,#nameUpdate,#addressUpdate,#salaryUpdate").on('blur', function (event) {
+     checkValidity(customerValidationsUpdate);
+ });
+
 
