@@ -275,4 +275,46 @@ $("#btnSearchCus").click(function () {
      error: 'Customer Salary Pattern is Wrong : 100 or 100.00'
  });
 
+ /**
+  * Input Fields warnings in Update Customer
+  * */
+ let customerValidationsUpdate = [];
+ customerValidationsUpdate.push({
+     reg: regExCusID,
+     field: $('#searchCustomerId'),
+     error: 'Customer ID Pattern is Wrong : C00-001'
+ });
+ customerValidationsUpdate.push({
+     reg: regExCusName,
+     field: $('#nameUpdate'),
+     error: 'Customer Name Pattern is Wrong : A-z 3-20'
+ });
+ customerValidationsUpdate.push({
+     reg: regExCusAddress,
+     field: $('#addressUpdate'),
+     error: 'Customer Address Pattern is Wrong : A-z 0-9 ,/'
+ });
+ customerValidationsUpdate.push({
+     reg: regExSalary,
+     field: $('#salaryUpdate'),
+     error: 'Customer Salary Pattern is Wrong : 100 or 100.00'
+ });
+
+ /**
+  * Disable "Tab" Key in +New Customer
+  * */
+ $("#txtCustomerId,#txtCustomerName,#txtCustomerAddress,#txtCustomerSalary").on('keydown', function (event) {
+     if (event.key === "Tab") {
+         event.preventDefault();
+     }
+ });
+
+ $("#txtCustomerId,#txtCustomerName,#txtCustomerAddress,#txtCustomerSalary").on('keyup', function (event) {
+     checkValidity(customerValidations);
+ });
+
+ $("#txtCustomerId,#txtCustomerName,#txtCustomerAddress,#txtCustomerSalary").on('blur', function (event) {
+     checkValidity(customerValidations);
+ });
+
 
