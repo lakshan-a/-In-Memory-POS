@@ -369,9 +369,8 @@ $("#btnSearchCus").click(function () {
      checkValidity(customerValidationsUpdate);
  });
 
- /**
-  * Enable "Enter" Key in Update Customer
-  * */
+ //----------------------------- Enable "Enter" Key in Update Customer------------------------//
+
  $("#searchCustomerId").on('keydown', function (event) {
      if (event.key === "Enter" && check(regExCusID, $("#searchCustomerId"))) {
          $("#nameUpdate").focus();
@@ -400,9 +399,9 @@ $("#btnSearchCus").click(function () {
      }
  });
 
- /**
-  * Disable Update Customer Button
-  * */
+ //-----------------------------------Disable Update Customer Button------------------------------//
+
+
  function setButtonStateCU(value) {
      if (value > 0) {
          $("#bntUpdateCustomer").attr('disabled', true);
