@@ -369,4 +369,68 @@ $("#btnSearchCus").click(function () {
      checkValidity(customerValidationsUpdate);
  });
 
+ /**
+  * Enable "Enter" Key in Update Customer
+  * */
+ $("#searchCustomerId").on('keydown', function (event) {
+     if (event.key === "Enter" && check(regExCusID, $("#searchCustomerId"))) {
+         $("#nameUpdate").focus();
+     } else {
+         focusText($("#searchCustomerId"));
+     }
+ });
+
+ $("#nameUpdate").on('keydown', function (event) {
+     if (event.key === "Enter" && check(regExCusName, $("#nameUpdate"))) {
+         focusText($("#addressUpdate"));
+     }
+ });
+
+ $("#addressUpdate").on('keydown', function (event) {
+     if (event.key === "Enter" && check(regExCusAddress, $("#addressUpdate"))) {
+         focusText($("#salaryUpdate"));
+     }
+ });
+
+ $("#salaryUpdate").on('keydown', function (event) {
+     if (event.key === "Enter" && check(regExSalary, $("#salaryUpdate"))) {
+         if (event.which === 13) {
+             $('#bntUpdateCustomer').focus();
+         }
+     }
+ });
+
+ /**
+  * Disable Update Customer Button
+  * */
+ function setButtonStateCU(value) {
+     if (value > 0) {
+         $("#bntUpdateCustomer").attr('disabled', true);
+     } else {
+         $("#bntUpdateCustomer").attr('disabled', false);
+     }
+ }
+
+ function deleteCustomer(customerID) {
+     let customer = searchCustomer(customerID);
+     if (customer != null) {
+         let indexNumber = customers.indexOf(customer);
+         customers.splice(indexNumber, 1);
+         loadAllCustomers();
+         clearCDTextFields();
+         return true;
+     } else {
+         return false;
+     }
+ }
+
+ function searchCustomer(cusId) {
+     for (let customer of customers) {
+         if (customer.id === cusId) {
+             return customer;
+         }
+     }
+     return null;
+ }
+
 
