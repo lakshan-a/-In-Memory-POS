@@ -231,9 +231,7 @@ $("#btnSearchCus").click(function () {
      });
  }
 
- /**
-  * Generate New Customer ID
-  * */
+ //----------------------------------- Generate New Customer ID--------------------------------//
  function generateCustomerID() {
      if (customers.length > 0) {
          let lastId = customers[customers.length - 1].id;
@@ -275,9 +273,8 @@ $("#btnSearchCus").click(function () {
      error: 'Customer Salary Pattern is Wrong : 100 or 100.00'
  });
 
- /**
-  * Input Fields warnings in Update Customer
-  * */
+ //------------------------------- Input Fields warnings in Update Customer-----------------------------//
+
  let customerValidationsUpdate = [];
  customerValidationsUpdate.push({
      reg: regExCusID,
@@ -300,9 +297,8 @@ $("#btnSearchCus").click(function () {
      error: 'Customer Salary Pattern is Wrong : 100 or 100.00'
  });
 
- /**
-  * Disable "Tab" Key in +New Customer
-  * */
+ //-------------------------------- Disable "Tab" Key in +New Customer---------------------------//
+
  $("#txtCustomerId,#txtCustomerName,#txtCustomerAddress,#txtCustomerSalary").on('keydown', function (event) {
      if (event.key === "Tab") {
          event.preventDefault();
