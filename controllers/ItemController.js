@@ -221,9 +221,7 @@ function generateItemID() {
         return "I00-001";
     }
 }
-/**
- * Input Fields warnings in +New Item
- * */
+//------------------------Input Fields warnings in +New Item-----------------------//
 $("#txtItemsId").focus();
 const regExItemCode = /^(I00-)[0-9]{3,4}$/;
 const regExItemName = /^[A-z ]{3,20}$/;
@@ -252,9 +250,7 @@ ItemsValidations.push({
     error: 'Item Salary Pattern is Wrong : 100 or 100.00'
 });
 
-/**
- * Input Fields warnings in Update Item
- * */
+//----------------------- Input Fields warnings in Update Item----------------------//
 let ItemsValidationsUpdate = [];
 ItemsValidationsUpdate.push({
     reg: regExItemCode,
@@ -277,9 +273,7 @@ ItemsValidationsUpdate.push({
     error: 'Item Salary Pattern is Wrong : 100 or 100.00'
 });
 
-/**
- * Disable "Tab" Key in +New Item
- * */
+//-------------------------- Disable "Tab" Key in +New Item------------------------//
 $("#txtItemsId,#txtItemName,#txtItemQty,#txtItemPrice").on('keydown', function (event) {
     if (event.key === "Tab") {
         event.preventDefault();
