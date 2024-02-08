@@ -159,4 +159,74 @@ function clearDTextFields() {
 $("#btnViewAllItems").click(function () {
     loadAllItems();
 });
+/**
+ * Load All Items
+ * */
+function loadAllItems() {
+
+    //remove all the table body content before adding data
+    $("#ItemTable").empty();
+
+
+    // get all items records from the array
+    for (var item of items) {
+        console.log(item);// items object
+
+        // Using String Literals to do the same thing as above
+        var row = `<tr><td>${item.code}</td><td>${item.name}</td><td>${item.qty}</td><td>${item.price}</td></tr>`;
+
+        //then add it to the table body of items table
+        $("#ItemTable").append(row);
+    }
+    tblClickEventsI();
+    dblRowClickEventsItem();
+    loadAllItemsForOption();
+}
+
+/**
+ * Table Listener Click & Load To TextFields
+ * */
+function tblClickEventsI() {
+    $("#ItemTable>tr").click(function () {
+        let code = $(this).children().eq(0).text();
+        let name = $(this).children().eq(1).text();
+        let qty = $(this).children().eq(2).text();
+        let price = $(this).children().eq(3).text();
+
+        $("#searchItemId").val(code);
+        $("#updateItemName").val(name);
+        $("#updateItemQty").val(qty);
+        $("#updateItemPrice").val(price);
+
+        $("#searchDItemId").val(code);
+        $("#DItemName").val(name);
+        $("#DItemQty").val(qty);
+        $("#DItemPrice").val(price);
+    });
+}
+
+/**
+ * Table Listener Double Click & Remove
+ * */
+function dblRowClickEventsItem() {
+    $("#ItemTable>tr").on('dblclick', function () {
+        let deleteItemID = $(this).children().eq(0).text();
+        yesNoAlertIDelete(deleteItemID);
+
+    });
+}
+
+/**
+ * Generate New Item Code
+ * */
+function generateItemID() {
+    if (items.length > 0) {
+        let lastId = items[items.length - 1].code;
+        let digit = lastId.substring(6);
+        let number = parseInt(digit) + 1;
+        return lastId.replace(digit, number);
+    } else {
+        return "I00-001";
+    }
+}
 
