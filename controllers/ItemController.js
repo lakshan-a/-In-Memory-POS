@@ -59,9 +59,7 @@ $("#btnSearchItem").click(function () {
         clearCDTextFields();
     }
 });
-/**
- * Clear Input Field in Search Bar
- * */
+//--------------------------- Clear Input Field in Search Bar---------------------------------//
 $("#clearSearchItem").click(function () {
     ItemIdSearch.value = '';
     clearUTextFields();
@@ -69,9 +67,7 @@ $("#clearSearchItem").click(function () {
     loadAllItems();
 });
 
-/**
- * Auto Forces Input Field in Search Bar
- * */
+//-------------------------- Auto Forces Input Field in Search Bar---------------------------//
 $('#ItemIdSearch').keypress(function (event) {
     if (event.which === 13) {
         $('#btnSearchItem').focus();
@@ -83,9 +79,7 @@ $('#btnSearchItem').keypress(function (event) {
     }
 });
 
-/**
- * Update Item
- * */
+//------------------------------------Update Item------------------//
 $("#btnUpdateItem").click(function () {
     let ItemId = $("#searchItemId").val();
     let response = updateItem(ItemId);
@@ -111,9 +105,7 @@ function updateItem(itemId) {
     }
 }
 
-/**
- * Clear Text Fields in Update Item
- * */
+//------------------------ Clear Text Fields in Update Item----------------------//
 $("#btnUclearI").click(function () {
     clearUTextFields();
 });
