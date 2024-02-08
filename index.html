@@ -122,8 +122,8 @@
                     </select>
                 </div>
 
-
             </div>
+
             <div class="col-lg-5 mt-4">
                 <button id="btnRegister" class="btn btn-primary mt-2 m-1" data-bs-target="#registerCustomer"
                         data-bs-toggle="modal" type="button">+ New Customer
@@ -297,13 +297,23 @@
                     <input class="form-control me-2" id="ItemIdSearch" placeholder="Input Name/Code/Tp Here"
                            type="search">
                 </div>
-                <form>
-                    <button class="btn btn-primary ms-3 mb-3 ms-md-3 ms-lg-3 btn-success" id="btnSearchItem"
-                            type="button">Search
-                    </button>
-                    <button class="btn btn-warning ms-3 mb-3 ms-md-3 ms-lg-3" id="clearSearchItem" type="button">Clear
-                    </button>
-                </form>
+<!--                <form>-->
+<!--                    <button class="btn btn-primary ms-3 mb-3 ms-md-3 ms-lg-3 btn-success" id="btnSearchItem"-->
+<!--                            type="button">Search-->
+<!--                    </button>-->
+<!--                    <button class="btn btn-warning ms-3 mb-3 ms-md-3 ms-lg-3" id="clearSearchItem" type="button">Clear-->
+<!--                    </button>-->
+<!--                </form>-->
+
+                <div class="mb-3 ms-3 me-3  col-12 col-md-3 ">
+                    <select class="btn btn-warning dropdown-toggle me-2 mb-2 mb-lg-0" type="button"
+                            id="btnSearchItem"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <option><a class="dropdown-item" href="#">Item Code</a></option>
+                        <option><a class="dropdown-item" href="#">Name</a></option>
+                    </select>
+                </div>
+
             </div>
             <div class="col-10 col-md-5 col-lg-5 mt-2">
                 <button class="btn btn-primary mt-2 m-1" data-bs-target="#registerItem"
@@ -319,7 +329,10 @@
                 </button>
 
                 <button class="btn btn-success mt-2 m-1" id="btnViewAllItems" type="button">View All Items</button>
+
             </div>
+
+
         </div>
         <div class="row mt-1 mt-md-2 mt-lg-4 justify-content-around" style="height: 200px">
             <div class="col-10">
