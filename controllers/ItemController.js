@@ -110,3 +110,53 @@ $("#btnUclearI").click(function () {
     clearUTextFields();
 });
 
+
+function clearUTextFields() {
+    searchItemId.value = '';
+    updateItemName.value = '';
+    updateItemQty.value = '';
+    updateItemPrice.value = '';
+    checkValidity(ItemsValidationsUpdate);
+}
+
+//----------------------------------Delete Item-------------------------------//
+$("#btnDeleteItems").click(function () {
+    let deleteIID = $("#searchDItemId").val();
+    yesNoAlertIDelete(deleteIID);
+});
+
+//------------------------------- Search Id Enter Pressed And Load TextFields-----------------------------//
+$("#searchDItemId").keyup(function (event) {
+    if (event.keyCode === 13) {
+        var resultI = items.find(({code}) => code === $("#searchDItemId").val());
+        console.log(resultI);
+
+        if (resultI != null) {
+            $("#searchDItemId").val(resultI.code);
+            $("#DItemName").val(resultI.name);
+            $("#DItemQty").val(resultI.qty);
+            $("#DItemPrice").val(resultI.price);
+        } else {
+            emptyMassage();
+            clearCDTextFields();
+        }
+    }
+});
+
+//---------------------------- Clear Text Fields in Delete Item---------------------//
+$("#btnDclearI").click(function () {
+    clearDTextFields();
+});
+
+function clearDTextFields() {
+    searchDItemId.value = '';
+    DItemName.value = '';
+    DItemQty.value = '';
+    DItemPrice.value = '';
+}
+
+//------------------------------- View All Items----------------------//
+$("#btnViewAllItems").click(function () {
+    loadAllItems();
+});
+
