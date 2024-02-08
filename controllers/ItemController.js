@@ -1,6 +1,4 @@
-/**
- * Save Item
- * */
+//-------------------------------Save Item-----------------------------------//
 $("#btnISave").click(function () {
 
     //create object
@@ -23,9 +21,7 @@ $("#btnISave").click(function () {
     loadAllItems();
 });
 
-/**
- * Clear Text Fields in +New Item
- * */
+//-------------------------------- Clear Text Fields in +New Item----------------------------//
 $("#btnClearI").click(function () {
     clearTextFieldsI();
 });
@@ -39,9 +35,7 @@ function clearTextFieldsI() {
     checkValidity(ItemsValidations);
 }
 
-/**
- * Search Item
- * */
+//-------------------------- Search Item---------------------------//
 $("#btnSearchItem").click(function () {
     var resultI = items.find(({code}) => code === $("#ItemIdSearch").val());
     console.log(resultI);
@@ -65,3 +59,62 @@ $("#btnSearchItem").click(function () {
         clearCDTextFields();
     }
 });
+/**
+ * Clear Input Field in Search Bar
+ * */
+$("#clearSearchItem").click(function () {
+    ItemIdSearch.value = '';
+    clearUTextFields();
+    clearDTextFields();
+    loadAllItems();
+});
+
+/**
+ * Auto Forces Input Field in Search Bar
+ * */
+$('#ItemIdSearch').keypress(function (event) {
+    if (event.which === 13) {
+        $('#btnSearchItem').focus();
+    }
+});
+$('#btnSearchItem').keypress(function (event) {
+    if (event.which === 13) {
+        $('#ItemIdSearch').focus();
+    }
+});
+
+/**
+ * Update Item
+ * */
+$("#btnUpdateItem").click(function () {
+    let ItemId = $("#searchItemId").val();
+    let response = updateItem(ItemId);
+    if (response) {
+        saveUpdateAlert(ItemId, "updated.");
+        checkValidity(ItemsValidationsUpdate);
+    } else {
+        unSucsessUpdateAlert(ItemId);
+    }
+});
+
+function updateItem(itemId) {
+    let item = searchItem(itemId);
+    if (item != null) {
+        item.code = $("#searchItemId").val();
+        item.name = $("#updateItemName").val();
+        item.qty = $("#updateItemQty").val();
+        item.price = $("#updateItemPrice").val();
+        loadAllItems();
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * Clear Text Fields in Update Item
+ * */
+$("#btnUclearI").click(function () {
+    clearUTextFields();
+});
+
