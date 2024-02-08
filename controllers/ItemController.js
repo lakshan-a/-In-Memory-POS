@@ -159,9 +159,7 @@ function clearDTextFields() {
 $("#btnViewAllItems").click(function () {
     loadAllItems();
 });
-/**
- * Load All Items
- * */
+//------------------------------- Load All Items-----------------------------//
 function loadAllItems() {
 
     //remove all the table body content before adding data
@@ -183,9 +181,7 @@ function loadAllItems() {
     loadAllItemsForOption();
 }
 
-/**
- * Table Listener Click & Load To TextFields
- * */
+//--------------------------------- Table Listener Click & Load To TextFields-------------------------------//
 function tblClickEventsI() {
     $("#ItemTable>tr").click(function () {
         let code = $(this).children().eq(0).text();
@@ -205,9 +201,7 @@ function tblClickEventsI() {
     });
 }
 
-/**
- * Table Listener Double Click & Remove
- * */
+//----------------------- Table Listener Double Click & Remove------------------------------//
 function dblRowClickEventsItem() {
     $("#ItemTable>tr").on('dblclick', function () {
         let deleteItemID = $(this).children().eq(0).text();
@@ -216,9 +210,7 @@ function dblRowClickEventsItem() {
     });
 }
 
-/**
- * Generate New Item Code
- * */
+//------------------------- Generate New Item Code--------------------------//
 function generateItemID() {
     if (items.length > 0) {
         let lastId = items[items.length - 1].code;
