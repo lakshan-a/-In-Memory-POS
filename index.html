@@ -393,6 +393,45 @@
         </div>
     </div>
 </div>
+<div id="updateItem" aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header  bg-warning">
+                <h5 class="modal-title text-dark">Update Item</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="ms-3 me-3">
+                        <label class="form-label fw-bold mb-0" for="searchItemId">Item Code :</label>
+                        <input class="form-control" disabled id="searchItemId" type="text">
+                        <span class="control-error" id="lblUItemId"></span>
+                    </div>
+                    <div class="ms-3 me-3">
+                        <label class="form-label fw-bold mb-0" for="updateItemName">Item Name :</label>
+                        <input class="form-control" id="updateItemName" type="text">
+                        <span class="control-error" id="lblUItemName"></span>
+                    </div>
+                    <div class="ms-3 me-3">
+                        <label class="form-label fw-bold mb-0" for="updateItemQty">Quantity :</label>
+                        <input class="form-control" id="updateItemQty" type="text">
+                        <span class="control-error" id="lblUItemQty"></span>
+                    </div>
+                    <div class="ms-3 me-3">
+                        <label class="form-label fw-bold mb-0" for="updateItemPrice">Price :</label>
+                        <input class="form-control" id="updateItemPrice" type="number">
+                        <span class="control-error" id="lblUItemPrice"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+                <button class="btn btn-warning" id="btnUclearI" type="reset">Clear</button>
+                <button class="btn btn-primary" id="btnUpdateItem" type="button">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
