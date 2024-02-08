@@ -221,4 +221,77 @@ function generateItemID() {
         return "I00-001";
     }
 }
+/**
+ * Input Fields warnings in +New Item
+ * */
+$("#txtItemsId").focus();
+const regExItemCode = /^(I00-)[0-9]{3,4}$/;
+const regExItemName = /^[A-z ]{3,20}$/;
+const regExItemPrice = /^[0-9]{1,10}$/;
+const regExItemQtyOnHand = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
+
+let ItemsValidations = [];
+ItemsValidations.push({
+    reg: regExItemCode,
+    field: $('#txtItemsId'),
+    error: 'Item ID Pattern is Wrong : I00-001'
+});
+ItemsValidations.push({
+    reg: regExItemName,
+    field: $('#txtItemName'),
+    error: 'Item Name Pattern is Wrong : A-z 3-20'
+});
+ItemsValidations.push({
+    reg: regExItemPrice,
+    field: $('#txtItemQty'),
+    error: 'Item Qty Pattern is Wrong : 0-9 1-10'
+});
+ItemsValidations.push({
+    reg: regExItemQtyOnHand,
+    field: $('#txtItemPrice'),
+    error: 'Item Salary Pattern is Wrong : 100 or 100.00'
+});
+
+/**
+ * Input Fields warnings in Update Item
+ * */
+let ItemsValidationsUpdate = [];
+ItemsValidationsUpdate.push({
+    reg: regExItemCode,
+    field: $('#searchItemId'),
+    error: 'Item ID Pattern is Wrong : I00-001'
+});
+ItemsValidationsUpdate.push({
+    reg: regExItemName,
+    field: $('#updateItemName'),
+    error: 'Item Name Pattern is Wrong : A-z 3-20'
+});
+ItemsValidationsUpdate.push({
+    reg: regExItemPrice,
+    field: $('#updateItemQty'),
+    error: 'Item Qty Pattern is Wrong : 0-9 1-10'
+});
+ItemsValidationsUpdate.push({
+    reg: regExItemQtyOnHand,
+    field: $('#updateItemPrice'),
+    error: 'Item Salary Pattern is Wrong : 100 or 100.00'
+});
+
+/**
+ * Disable "Tab" Key in +New Item
+ * */
+$("#txtItemsId,#txtItemName,#txtItemQty,#txtItemPrice").on('keydown', function (event) {
+    if (event.key === "Tab") {
+        event.preventDefault();
+    }
+});
+
+$("#txtItemsId,#txtItemName,#txtItemQty,#txtItemPrice").on('keyup', function (event) {
+    checkValidity(ItemsValidations);
+});
+
+$("#txtItemsId,#txtItemName,#txtItemQty,#txtItemPrice").on('blur', function (event) {
+    checkValidity(ItemsValidations);
+});
+
 
