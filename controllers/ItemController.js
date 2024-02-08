@@ -287,5 +287,127 @@ $("#txtItemsId,#txtItemName,#txtItemQty,#txtItemPrice").on('keyup', function (ev
 $("#txtItemsId,#txtItemName,#txtItemQty,#txtItemPrice").on('blur', function (event) {
     checkValidity(ItemsValidations);
 });
+/**
+ * Enable "Enter" Key in +New Item
+ * */
+$("#txtItemsId").on('keydown', function (event) {
+    if (event.key === "Enter" && check(regExItemCode, $("#txtItemsId"))) {
+        $("#txtItemName").focus();
+    } else {
+        focusText($("#txtItemsId"));
+    }
+});
+
+$("#txtItemName").on('keydown', function (event) {
+    if (event.key === "Enter" && check(regExItemName, $("#txtItemName"))) {
+        focusText($("#txtItemQty"));
+    }
+});
+
+$("#txtItemQty").on('keydown', function (event) {
+    if (event.key === "Enter" && check(regExItemPrice, $("#txtItemQty"))) {
+        focusText($("#txtItemPrice"));
+    }
+});
+
+$("#txtItemPrice").on('keydown', function (event) {
+    if (event.key === "Enter" && check(regExItemQtyOnHand, $("#txtItemPrice"))) {
+        if (event.which === 13) {
+            $('#btnISave').focus();
+        }
+    }
+});
+
+/**
+ * Disable Save Item Button
+ * */
+function setButtonStateIS(value) {
+    if (value > 0) {
+        $("#btnISave").attr('disabled', true);
+    } else {
+        $("#btnISave").attr('disabled', false);
+    }
+}
+
+/**
+ * Disable "Tab" Key in Update Item
+ * */
+$("#searchItemId,#updateItemName,#updateItemQty,#updateItemPrice").on('keydown', function (event) {
+    if (event.key === "Tab") {
+        event.preventDefault();
+    }
+});
+
+$("#searchItemId,#updateItemName,#updateItemQty,#updateItemPrice").on('keyup', function (event) {
+    checkValidity(ItemsValidationsUpdate);
+});
+
+$("#searchItemId,#updateItemName,#updateItemQty,#updateItemPrice").on('blur', function (event) {
+    checkValidity(ItemsValidationsUpdate);
+});
+
+/**
+ * Enable "Enter" Key in Update Item
+ * */
+$("#searchItemId").on('keydown', function (event) {
+    if (event.key === "Enter" && check(regExItemCode, $("#searchItemId"))) {
+        $("#updateItemName").focus();
+    } else {
+        focusText($("#searchItemId"));
+    }
+});
+
+$("#updateItemName").on('keydown', function (event) {
+    if (event.key === "Enter" && check(regExItemName, $("#updateItemName"))) {
+        focusText($("#updateItemQty"));
+    }
+});
+
+$("#updateItemQty").on('keydown', function (event) {
+    if (event.key === "Enter" && check(regExItemPrice, $("#updateItemQty"))) {
+        focusText($("#updateItemPrice"));
+    }
+});
+
+$("#updateItemPrice").on('keydown', function (event) {
+    if (event.key === "Enter" && check(regExItemQtyOnHand, $("#updateItemPrice"))) {
+        if (event.which === 13) {
+            $('#btnUpdateItem').focus();
+        }
+    }
+});
+
+/**
+ * Disable Update Item Button
+ * */
+function setButtonStateIU(value) {
+    if (value > 0) {
+        $("#btnUpdateItem").attr('disabled', true);
+    } else {
+        $("#btnUpdateItem").attr('disabled', false);
+    }
+}
+
+function deleteItems(itemID) {
+    let item = searchItem(itemID);
+    if (item != null) {
+        let indexNumber1 = items.indexOf(item);
+        items.splice(indexNumber1, 1);
+        loadAllItems();
+        clearDTextFields();
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function searchItem(itemID) {
+    for (let item of items) {
+        if (item.code === itemID) {
+            return item;
+        }
+    }
+    return null;
+}
 
 
