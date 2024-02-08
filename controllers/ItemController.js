@@ -287,9 +287,8 @@ $("#txtItemsId,#txtItemName,#txtItemQty,#txtItemPrice").on('keyup', function (ev
 $("#txtItemsId,#txtItemName,#txtItemQty,#txtItemPrice").on('blur', function (event) {
     checkValidity(ItemsValidations);
 });
-/**
- * Enable "Enter" Key in +New Item
- * */
+
+//----------------------------- Enable "Enter" Key in +New Item------------------------------------//
 $("#txtItemsId").on('keydown', function (event) {
     if (event.key === "Enter" && check(regExItemCode, $("#txtItemsId"))) {
         $("#txtItemName").focus();
@@ -318,9 +317,7 @@ $("#txtItemPrice").on('keydown', function (event) {
     }
 });
 
-/**
- * Disable Save Item Button
- * */
+//----------------------------------- Disable Save Item Button-------------------------//
 function setButtonStateIS(value) {
     if (value > 0) {
         $("#btnISave").attr('disabled', true);
@@ -329,9 +326,7 @@ function setButtonStateIS(value) {
     }
 }
 
-/**
- * Disable "Tab" Key in Update Item
- * */
+//-------------------------------- Disable "Tab" Key in Update Item---------------------------------//
 $("#searchItemId,#updateItemName,#updateItemQty,#updateItemPrice").on('keydown', function (event) {
     if (event.key === "Tab") {
         event.preventDefault();
@@ -346,9 +341,7 @@ $("#searchItemId,#updateItemName,#updateItemQty,#updateItemPrice").on('blur', fu
     checkValidity(ItemsValidationsUpdate);
 });
 
-/**
- * Enable "Enter" Key in Update Item
- * */
+//--------------------------- Enable "Enter" Key in Update Item-----------------------------------------//
 $("#searchItemId").on('keydown', function (event) {
     if (event.key === "Enter" && check(regExItemCode, $("#searchItemId"))) {
         $("#updateItemName").focus();
@@ -377,9 +370,7 @@ $("#updateItemPrice").on('keydown', function (event) {
     }
 });
 
-/**
- * Disable Update Item Button
- * */
+//-----------------------------Disable Update Item Button------------------//
 function setButtonStateIU(value) {
     if (value > 0) {
         $("#btnUpdateItem").attr('disabled', true);
