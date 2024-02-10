@@ -69,17 +69,17 @@ $("#clearSearchCus").click(function () {
     loadAllCustomers();
 });
 
-//---------------------------------------- Auto Forces Input Field in Search Bar------------------------------------//
-$('#searchCusId').keypress(function (event) {
-    if (event.which === 13) {
-        $('#btnSearchCus').focus();
-    }
-});
-$('#btnSearchCus').keypress(function (event) {
-    if (event.which === 13) {
-        $('#searchCusId').focus();
-    }
-});
+// //---------------------------------------- Auto Forces Input Field in Search Bar------------------------------------//
+// $('#searchCusId').keypress(function (event) {
+//     if (event.which === 13) {
+//         $('#btnSearchCus').focus();
+//     }
+// });
+// $('#btnSearchCus').keypress(function (event) {
+//     if (event.which === 13) {
+//         $('#searchCusId').focus();
+//     }
+// });
 
 //------------------------------------------------Update Customer------------------------------------//
 $("#bntUpdateCustomer").click(function () {
