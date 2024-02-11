@@ -159,3 +159,35 @@ function calcTotal(amount) {
     total += amount;
     $("#txtTotal").val(total);
 }
+
+/**
+ * Add To Table
+ * */
+$("#tblAddToCart").empty();
+
+function loadCartTableDetail() {
+    itemCode = $("#cmbItemCode").val();
+    itemName = $("#itemName").val();
+    itemPrice = $("#itemPrice").val();
+    itemQty = $("#qtyOnHand").val();
+    itemOrderQty = $("#buyQty").val();
+
+    let total = itemPrice * itemOrderQty;
+    let row = `<tr><td>${itemCode}</td><td>${itemName}</td><td>${itemPrice}</td><td>${itemOrderQty}</td><td>${total}</td></tr>`;
+
+    $("#tblAddToCart").append(row);
+}
+
+/**
+ * Manage QtyOnHand
+ * */
+function manageQtyOnHand(preQty, nowQty) {
+    var preQty = parseInt(preQty);
+    var nowQty = parseInt(nowQty);
+    let avaQty = parseInt($("#qtyOnHand").val());
+
+    avaQty = avaQty + preQty;
+    avaQty = avaQty - nowQty;
+    $("#qtyOnHand").val(avaQty);
+}
+
