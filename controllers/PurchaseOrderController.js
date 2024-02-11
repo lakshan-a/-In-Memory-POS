@@ -161,18 +161,14 @@ function manageQtyOnHand(preQty, nowQty) {
     $("#qtyOnHand").val(avaQty);
 }
 
-/**
- * Manage Total
- * */
+//------------------------------ Manage Total--------------------------//
 function manageTotal(preTotal, nowTotal) {
     total -= preTotal;
     total += nowTotal;
     $("#txtTotal").val(total);
 }
 
-/**
- * Update QtyOnHand
- * */
+//--------------------------------Update QtyOnHand----------------------------------//
 $("#btnAddToCart").click(function () {
     let itemIdQ = $("#cmbItemCode").val();
     let response = updateItemQty(itemIdQ);
@@ -200,9 +196,7 @@ function searchItemQty(itemIdQ) {
     return null;
 }
 
-/**
- * Purchase Order
- * */
+//----------------------------- Purchase Order---------------------------------//
 $("#btnPurchase").click(function () {
     placeOrder();
     pushOrderDetails();
@@ -211,9 +205,7 @@ $("#btnPurchase").click(function () {
     $("#tblAddToCart").empty();
 });
 
-/**
- * PlaceOrder to Order Array
- * */
+//---------------------------------- PlaceOrder to Order Array---------------------------------//
 function placeOrder() {
     //create object
     let orderArrayList = new order($("#orderId").val(), $("#cmbCustomerId").val(), $("#orderDate").val(), $("#txtSubTotal").val(), $("#txtDiscount").val());
@@ -223,9 +215,7 @@ function placeOrder() {
     saveUpdateAlert("Place Ordering", "Successfully.");
 }
 
-/**
- * PlaceOrder to OrderDetails Array
- * */
+//---------------------------------- PlaceOrder to OrderDetails Array-------------------------------------//
 function pushOrderDetails() {
     for (let i = 0; i < $("#tblAddToCart tr").length; i++) {
         let orderId = $("#orderId").val();
@@ -241,9 +231,7 @@ function pushOrderDetails() {
     }
 }
 
-/**
- * Enter Buy Qty and Check Qty On Hand
- * */
+//---------------------------------- Enter Buy Qty and Check Qty On Hand----------------------------------//
 $(document).on("change keyup blur", "#buyQty", function () {
     let qtyOnHand = $("#qtyOnHand").val();
     let buyQty = $("#buyQty").val();
@@ -257,9 +245,7 @@ $(document).on("change keyup blur", "#buyQty", function () {
     }
 });
 
-/**
- * Enter Discount & Sub Total
- * */
+//------------------------------ Enter Discount & Sub Total-------------------------------------//
 $(document).on("change keyup blur", "#txtDiscount", function () {
     discount = $("#txtDiscount").val();
     discount = (total / 100) * discount;
@@ -268,9 +254,7 @@ $(document).on("change keyup blur", "#txtDiscount", function () {
     $("#txtSubTotal").val(subTotal);
 });
 
-/**
- * Enter Cash and Display Balance
- * */
+//------------------------------------- Enter Cash and Display Balance----------------------------------//
 $(document).on("change keyup blur", "#txtCash", function () {
     let cash = $("#txtCash").val();
     let balance = cash - subTotal;
@@ -284,9 +268,7 @@ $(document).on("change keyup blur", "#txtCash", function () {
     }
 });
 
-/**
- * Remove Row
- * */
+//--------------------------------------Remove Row--------------------------------------------//
 $("#tblAddToCart").dblclick(function () {
     Swal.fire({
         title: 'Do you want to Delete the Select row?',
