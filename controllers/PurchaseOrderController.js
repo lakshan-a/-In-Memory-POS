@@ -230,3 +230,27 @@ function searchItemQty(itemIdQ) {
     }
     return null;
 }
+
+/**
+ * Purchase Order
+ * */
+$("#btnPurchase").click(function () {
+    placeOrder();
+    pushOrderDetails();
+    $("#orderId").val(generateOrderID());
+    clearDetails();
+    $("#tblAddToCart").empty();
+});
+
+/**
+ * PlaceOrder to Order Array
+ * */
+function placeOrder() {
+    //create object
+    let orderArrayList = new order($("#orderId").val(), $("#cmbCustomerId").val(), $("#orderDate").val(), $("#txtSubTotal").val(), $("#txtDiscount").val());
+
+    orders.push(orderArrayList);
+    console.log(orderArrayList);
+    saveUpdateAlert("Place Ordering", "Successfully.");
+}
+
