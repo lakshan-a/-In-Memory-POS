@@ -141,3 +141,21 @@ $("#btnAddToCart").click(function () {
         $("#txtTotal").val(total);
     });
 });
+
+/**
+ * Reduce QtyOnHand
+ * */
+function reduceQty(orderQty) {
+    let minQty = parseInt(orderQty);
+    let reduceQty = parseInt($("#qtyOnHand").val());
+    reduceQty = reduceQty - minQty;
+    $("#qtyOnHand").val(reduceQty);
+}
+
+/**
+ * Calculate Total
+ * */
+function calcTotal(amount) {
+    total += amount;
+    $("#txtTotal").val(total);
+}
