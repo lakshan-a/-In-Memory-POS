@@ -191,7 +191,6 @@ function manageQtyOnHand(preQty, nowQty) {
     $("#qtyOnHand").val(avaQty);
 }
 
-
 /**
  * Manage Total
  * */
