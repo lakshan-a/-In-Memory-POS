@@ -42,15 +42,15 @@ $(document).ready(function () {
     });
 });
 
-// function setStatus(){
-//     $('#totOfCustomers').text(customers.length);
-//     $('#totOfItems').text(items.length);
-//     $('#totOfOrders').text(orders.length);
-//     $('#finishOrders').text(orders.length);
-//
-//
-//
-//     $('#income').text('55000');
-// }
-//
-// setStatus();
+function setStatus(){
+    $('#totOfCustomers').text(customers.length);
+    $('#totOfItems').text(items.length);
+    $('#totOfOrders').text(orders.length);
+    $('#finishOrders').text(orders.length);
+
+
+
+    $('#income').text('55000');
+}
+
+setStatus();
