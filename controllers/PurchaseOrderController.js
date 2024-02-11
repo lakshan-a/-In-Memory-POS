@@ -30,6 +30,7 @@ function setCurrentDate() {
     today = dd + '/' + mm + '/' + yyyy;
     orderDate.val(today);
 }
+
 /**
  * Load All Customers
  * */
@@ -49,6 +50,7 @@ $("#cmbCustomerId").click(function () {
     $("#customerAddress").val(rCmbC.address);
     $("#customerSalary").val(rCmbC.salary);
 });
+
 /**
  * Load All Items
  * */
@@ -68,3 +70,28 @@ $("#cmbItemCode").click(function () {
     $("#itemPrice").val(rCmbI.price);
     $("#qtyOnHand").val(rCmbI.qty);
 });
+
+/**
+ * Clear All
+ * */
+$("#btnClearAll").click(function () {
+    clearDetails();
+});
+
+function clearDetails() {
+    $('#cmbCustomerId,#customerName,#customerAddress,#customerSalary,#cmbItemCode,#itemName,#itemPrice,#qtyOnHand,#buyQty,#txtDiscount,#txtTotal,#txtDiscount,#txtSubTotal,#txtCash,#txtBalance').val("");
+}
+
+/**
+ * Item Details
+ * */
+let itemCode;
+let itemName;
+let itemPrice;
+let itemQty;
+let itemOrderQty;
+
+let total = 0;
+let discount = 0;
+let subTotal = 0;
+
