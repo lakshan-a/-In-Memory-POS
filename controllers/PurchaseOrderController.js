@@ -1,12 +1,8 @@
-/**
- * Disable Buttons
- * */
+//----------------------------- Disable Buttons---------------------------//
 $("#btnAddToCart").attr('disabled', true);
 $("#btnPurchase").attr('disabled', true);
 
-/**
- * Generate New Order ID
- * */
+//--------------------------- Generate New Order ID-----------------------------//
 function generateOrderID() {
     if (orders.length > 0) {
         let lastId = orders[orders.length - 1].oId;
@@ -18,9 +14,7 @@ function generateOrderID() {
     }
 }
 
-/**
- * Add Order Date
- * */
+//-----------------------------------Add Order Date------------------------------//
 function setCurrentDate() {
     let orderDate = $("#orderDate");
     let today = new Date();
@@ -31,9 +25,7 @@ function setCurrentDate() {
     orderDate.val(today);
 }
 
-/**
- * Load All Customers
- * */
+//------------------------------------- Load All Customers-------------------------------//
 function loadAllCustomersForOption() {
     $("#cmbCustomerId").empty();
     for (let cus of customers) {
@@ -41,9 +33,7 @@ function loadAllCustomersForOption() {
     }
 }
 
-/**
- * Customers Combo Box
- * */
+//------------------------ Customers Combo Box-------------------------//
 $("#cmbCustomerId").click(function () {
     let rCmbC = customers.find(({id}) => id === $("#cmbCustomerId").val());
     $("#customerName").val(rCmbC.name);
@@ -51,9 +41,7 @@ $("#cmbCustomerId").click(function () {
     $("#customerSalary").val(rCmbC.salary);
 });
 
-/**
- * Load All Items
- * */
+//------------------------------ Load All Items--------------------//
 function loadAllItemsForOption() {
     $("#cmbItemCode").empty();
     for (let item of items) {
@@ -61,9 +49,7 @@ function loadAllItemsForOption() {
     }
 }
 
-/**
- * Items Combo Box
- * */
+//--------------------- Items Combo Box------------------//
 $("#cmbItemCode").click(function () {
     let rCmbI = items.find(({code}) => code === $("#cmbItemCode").val());
     $("#itemName").val(rCmbI.name);
@@ -71,9 +57,7 @@ $("#cmbItemCode").click(function () {
     $("#qtyOnHand").val(rCmbI.qty);
 });
 
-/**
- * Clear All
- * */
+//------------------------ Clear All------------------------//
 $("#btnClearAll").click(function () {
     clearDetails();
 });
@@ -82,9 +66,7 @@ function clearDetails() {
     $('#cmbCustomerId,#customerName,#customerAddress,#customerSalary,#cmbItemCode,#itemName,#itemPrice,#qtyOnHand,#buyQty,#txtDiscount,#txtTotal,#txtDiscount,#txtSubTotal,#txtCash,#txtBalance').val("");
 }
 
-/**
- * Item Details
- * */
+//-----------------------------Item Details-------------------------//
 let itemCode;
 let itemName;
 let itemPrice;
@@ -95,9 +77,7 @@ let total = 0;
 let discount = 0;
 let subTotal = 0;
 
-/**
- * Add To Cart
- * */
+//----------------------------Add To Cart--------------------------//
 let tableRow = [];
 $("#btnAddToCart").click(function () {
     let duplicate = false;
@@ -123,9 +103,7 @@ $("#btnAddToCart").click(function () {
 
     }
 
-    /**
-     * Add To Table
-     * */
+    //--------------------------- Add To Table----------------------------------------//
     $("#tblAddToCart>tr").click('click', function () {
         tableRow = $(this);
         let itemCode = $(this).children(":eq(0)").text();
@@ -142,9 +120,7 @@ $("#btnAddToCart").click(function () {
     });
 });
 
-/**
- * Reduce QtyOnHand
- * */
+//--------------------------- Reduce QtyOnHand-------------------------------//
 function reduceQty(orderQty) {
     let minQty = parseInt(orderQty);
     let reduceQty = parseInt($("#qtyOnHand").val());
@@ -152,17 +128,13 @@ function reduceQty(orderQty) {
     $("#qtyOnHand").val(reduceQty);
 }
 
-/**
- * Calculate Total
- * */
+//-------------------------------- Calculate Total-------------------------------//
 function calcTotal(amount) {
     total += amount;
     $("#txtTotal").val(total);
 }
 
-/**
- * Add To Table
- * */
+//--------------------------------- Add To Table--------------------------------//
 $("#tblAddToCart").empty();
 
 function loadCartTableDetail() {
@@ -178,9 +150,7 @@ function loadCartTableDetail() {
     $("#tblAddToCart").append(row);
 }
 
-/**
- * Manage QtyOnHand
- * */
+//--------------------------------------- Manage QtyOnHand-------------------------------------//
 function manageQtyOnHand(preQty, nowQty) {
     var preQty = parseInt(preQty);
     var nowQty = parseInt(nowQty);
