@@ -403,3 +403,41 @@ function searchCustomer(cusId) {
     }
     return null;
 }
+
+//------------------------Search customer -------------------------------//
+
+$('#txtSearch').on('keyup',function (){
+
+    let txtVal = $('#txtSearch');
+
+    if (txtVal.val() === ''){
+        getAll();
+    }
+
+    $(`#customerTable`).empty();
+    for (let customer of customers) {
+        if ($("#cusSearch").val() == "Customer Id") {
+            if (customer.id.indexOf($("#txtSearch").val()) !== -1) {
+                $("#tableCustomer > tbody").append($(`#body`).append(` <tr>
+                    <td>${customer.id}</td>
+                    <td>${customer.name}</td>
+                    <td>${customer.address}</td>
+                    <td>${customer.salary}</td>
+                </tr>`));
+            }
+        } else {
+            if (customer.name.indexOf($("#txtSearch").val()) !== -1) {
+
+                $("#tableCustomer > tbody").append($(`#customerTable`).append(` <tr>
+                    <td>${customer.id}</td>
+                    <td>${customer.name}</td>
+                    <td>${customer.address}</td>
+                    <td>${customer.salary}</td>
+                </tr>`));
+
+
+
+            }
+        }
+    }
+});
