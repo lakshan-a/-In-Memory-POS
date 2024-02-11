@@ -418,7 +418,7 @@ $('#txtSearch').on('keyup',function (){
     for (let customer of customers) {
         if ($("#cusSearch").val() == "Customer Id") {
             if (customer.id.indexOf($("#txtSearch").val()) !== -1) {
-                $("#tableCustomer > tbody").append($(`#body`).append(` <tr>
+                $("#tableCustomer > tbody").append($(`#customerTable`).append(` <tr>
                     <td>${customer.id}</td>
                     <td>${customer.name}</td>
                     <td>${customer.address}</td>

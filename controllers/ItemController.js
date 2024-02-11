@@ -401,4 +401,40 @@ function searchItem(itemID) {
     return null;
 }
 
+//------------------------Search customer -------------------------------//
+
+$('#txtItemSearch').on('keyup',function (){
+
+    let txtVal = $('#txtItemSearch');
+
+    if (txtVal.val() === ''){
+        getAll();
+    }
+
+    $(`#ItemTable`).empty();
+    for (let item of items) {
+        if ($("#itemSearch").val() == "Item Code") {
+            if (item.id.indexOf($("#txtItemSearch").val()) !== -1) {
+                $("#tableItem > tbody").append($(`#body`).append(`<tr>
+                    <td>${item.code}</td>
+                    <td>${item.name}</td>
+                    <td>${item.qty}</td>
+                    <td>${item.price}</td>
+                </tr>`));
+            }
+        } else {
+            if (item.name.indexOf($("#itemSearch").val()) !== -1) {
+
+                $("#tableItem > tbody").append($(`#ItemTable`).append(`<tr>
+                    <td>${item.code}</td>
+                    <td>${item.name}</td>
+                    <td>${item.qty}</td>
+                    <td>${item.price}</td>
+                    </tr>`));
+
+            }
+        }
+    }
+});
+
 
