@@ -191,3 +191,22 @@ function manageQtyOnHand(preQty, nowQty) {
     $("#qtyOnHand").val(avaQty);
 }
 
+
+/**
+ * Manage Total
+ * */
+function manageTotal(preTotal, nowTotal) {
+    total -= preTotal;
+    total += nowTotal;
+    $("#txtTotal").val(total);
+}
+
+/**
+ * Update QtyOnHand
+ * */
+$("#btnAddToCart").click(function () {
+    let itemIdQ = $("#cmbItemCode").val();
+    let response = updateItemQty(itemIdQ);
+    if (response) {
+    }
+});
