@@ -288,4 +288,31 @@ $(document).on("change keyup blur", "#buyQty", function () {
     }
 });
 
+/**
+ * Enter Discount & Sub Total
+ * */
+$(document).on("change keyup blur", "#txtDiscount", function () {
+    discount = $("#txtDiscount").val();
+    discount = (total / 100) * discount;
+    subTotal = total - discount;
+
+    $("#txtSubTotal").val(subTotal);
+});
+
+/**
+ * Enter Cash and Display Balance
+ * */
+$(document).on("change keyup blur", "#txtCash", function () {
+    let cash = $("#txtCash").val();
+    let balance = cash - subTotal;
+    $("#txtBalance").val(balance);
+    if (balance < 0) {
+        $("#lblCheckSubtotal").parent().children('strong').text(balance + " : plz enter valid Balance");
+        $("#btnPurchase").attr('disabled', true);
+    } else {
+        $("#lblCheckSubtotal").parent().children('strong').text("");
+        $("#btnPurchase").attr('disabled', false);
+    }
+});
+
 
