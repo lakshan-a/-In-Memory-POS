@@ -78,3 +78,25 @@ nav_home.addEventListener("click", function () {
     main_root.style.left = `0`;
     main_root.style.transitionDuration = `1s`;
 });
+
+nav_order.addEventListener("click", function () {
+
+    nav_customer_txt.style.fontSize = `20px`;
+    nav_customer_txt.style.color = `black`;
+
+    nav_item_txt.style.fontSize = `20px`;
+    nav_item_txt.style.color = `black`;
+
+    nav_order_txt.style.fontSize = `21px`;
+    nav_order_txt.style.color = `red`;
+
+    nav_home_txt.style.fontSize = `20px`;
+    nav_home_txt.style.color = `black`;
+
+    nav_order_detail_txt.style.fontSize = `20px`;
+    nav_order_detail_txt.style.color = `black`;
+
+    main_root.style.position = `relative`;
+    main_root.style.left = `-200vw`;
+    main_root.style.transitionDuration = `1s`;
+});
