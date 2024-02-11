@@ -254,3 +254,38 @@ function placeOrder() {
     saveUpdateAlert("Place Ordering", "Successfully.");
 }
 
+/**
+ * PlaceOrder to OrderDetails Array
+ * */
+function pushOrderDetails() {
+    for (let i = 0; i < $("#tblAddToCart tr").length; i++) {
+        let orderId = $("#orderId").val();
+        let cusId = $("#cmbCustomerId").val();
+        let itemId = $("#tblAddToCart tr").children(':nth-child(1)')[i].innerText;
+        let qty = $("#tblAddToCart tr").children(':nth-child(4)')[i].innerText;
+        let total = $("#tblAddToCart tr").children(':nth-child(5)')[i].innerText;
+
+        let orderDetailArrayList = new orderDetail(orderId, cusId, itemId, qty, total);
+
+        orderDetails.push(orderDetailArrayList);
+        console.log(orderDetailArrayList);
+    }
+}
+
+/**
+ * Enter Buy Qty and Check Qty On Hand
+ * */
+$(document).on("change keyup blur", "#buyQty", function () {
+    let qtyOnHand = $("#qtyOnHand").val();
+    let buyQty = $("#buyQty").val();
+    let buyOnHand = qtyOnHand - buyQty;
+    if (buyOnHand < 0) {
+        $("#lblCheckQty").parent().children('strong').text(qtyOnHand + " : Empty On Stock..!!");
+        $("#btnAddToCart").attr('disabled', true);
+    } else {
+        $("#lblCheckQty").parent().children('strong').text("");
+        $("#btnAddToCart").attr('disabled', false);
+    }
+});
+
+
