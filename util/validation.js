@@ -1,47 +1,110 @@
-function checkValidity(object) {
-    let errorCount = 0;
-    for (let validation of object) {
-        if (check(validation.reg, validation.field)) {
-            textSuccess(validation.field, "");
-        } else {
-            errorCount = errorCount + 1;
-            setTextError(validation.field, validation.error);
+function saveUpdateAlert(vale, value2) {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: vale + ' has been ' + value2,
+        showConfirmButton: false,
+        timer: 2500
+    });
+}
+
+function unSucsessUpdateAlert(vale) {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: vale + 'Updated Unsuccessfully',
+        showConfirmButton: false,
+        timer: 1500
+    })
+}
+
+function yesNoAlertDelete(value) {
+    Swal.fire({
+        title: 'Do you want to Delete the \n' + value + ' ?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Delete',
+        denyButtonText: `Don't Delete`,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            if (deleteCustomer(value)) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Delete Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $(this).remove();
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Delete Unsuccessfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        } else if (result.isDenied) {
+            Swal.fire(value + ' Delete Canceled!', '', 'info')
         }
-    }
-    setButtonStateCS(errorCount);
-    setButtonStateCU(errorCount);
-    setButtonStateIS(errorCount);
-    setButtonStateIU(errorCount);
+    });
 }
 
-function check(regex, txtField) {
-    let inputValue = txtField.val();
-    return regex.test(inputValue) ? true : false;
+function yesNoAlertIDelete(value) {
+    Swal.fire({
+        title: 'Do you want to Delete the \n' + value + ' ?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Delete',
+        denyButtonText: `Don't Delete`,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            if (deleteItems(value)) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Delete Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $(this).remove();
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Delete Unsuccessfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        } else if (result.isDenied) {
+            Swal.fire(value + ' Delete Canceled!', '', 'info')
+        }
+    });
 }
 
-function textSuccess(txtField, error) {
-    if (txtField.val().length <= 0) {
-        defaultText(txtField, "");
-    } else {
-        txtField.css('border', '2px solid green');
-        txtField.parent().children('span').text(error);
-    }
-}
-
-function setTextError(txtField, error) {
-    if (txtField.val().length <= 0) {
-        defaultText(txtField, "");
-    } else {
-        txtField.css('border', '2px solid red');
-        txtField.parent().children('span').text(error);
-    }
-}
-
-function defaultText(txtField, error) {
-    txtField.css("border", "1px solid #ced4da");
-    txtField.parent().children('span').text(error);
-}
-
-function focusText(txtField) {
-    txtField.focus();
+function emptyMassage() {
+    let timerInterval
+    Swal.fire({
+        title: 'Empty Result!',
+        html: 'I will close in <b></b> milliseconds.',
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading()
+            const b = Swal.getHtmlContainer().querySelector('b')
+            timerInterval = setInterval(() => {
+                b.textContent = Swal.getTimerLeft()
+            }, 100)
+        },
+        willClose: () => {
+            clearInterval(timerInterval)
+        }
+    }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('I was closed by the timer')
+        }
+    })
 }
