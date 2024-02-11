@@ -49,3 +49,22 @@ $("#cmbCustomerId").click(function () {
     $("#customerAddress").val(rCmbC.address);
     $("#customerSalary").val(rCmbC.salary);
 });
+/**
+ * Load All Items
+ * */
+function loadAllItemsForOption() {
+    $("#cmbItemCode").empty();
+    for (let item of items) {
+        $("#cmbItemCode").append(`<option>${item.code}</option>`);
+    }
+}
+
+/**
+ * Items Combo Box
+ * */
+$("#cmbItemCode").click(function () {
+    let rCmbI = items.find(({code}) => code === $("#cmbItemCode").val());
+    $("#itemName").val(rCmbI.name);
+    $("#itemPrice").val(rCmbI.price);
+    $("#qtyOnHand").val(rCmbI.qty);
+});
