@@ -414,8 +414,8 @@ $('#txtItemSearch').on('keyup',function (){
     $(`#ItemTable`).empty();
     for (let item of items) {
         if ($("#itemSearch").val() == "Item Code") {
-            if (item.id.indexOf($("#txtItemSearch").val()) !== -1) {
-                $("#tableItem > tbody").append($(`#body`).append(`<tr>
+            if (item.code.indexOf($("#txtItemSearch").val()) !== -1) {
+                $("#tableItem > tbody").append($(`#ItemTable`).append(`<tr>
                     <td>${item.code}</td>
                     <td>${item.name}</td>
                     <td>${item.qty}</td>
@@ -423,18 +423,19 @@ $('#txtItemSearch').on('keyup',function (){
                 </tr>`));
             }
         } else {
-            if (item.name.indexOf($("#itemSearch").val()) !== -1) {
+            if (item.name.indexOf($("#txtItemSearch").val()) !== -1) {
 
                 $("#tableItem > tbody").append($(`#ItemTable`).append(`<tr>
                     <td>${item.code}</td>
                     <td>${item.name}</td>
                     <td>${item.qty}</td>
                     <td>${item.price}</td>
-                    </tr>`));
+                </tr>`));
 
             }
         }
     }
 });
+
 
 
