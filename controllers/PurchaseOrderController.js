@@ -30,3 +30,22 @@ function setCurrentDate() {
     today = dd + '/' + mm + '/' + yyyy;
     orderDate.val(today);
 }
+/**
+ * Load All Customers
+ * */
+function loadAllCustomersForOption() {
+    $("#cmbCustomerId").empty();
+    for (let cus of customers) {
+        $("#cmbCustomerId").append(`<option>${cus.id}</option>`);
+    }
+}
+
+/**
+ * Customers Combo Box
+ * */
+$("#cmbCustomerId").click(function () {
+    let rCmbC = customers.find(({id}) => id === $("#cmbCustomerId").val());
+    $("#customerName").val(rCmbC.name);
+    $("#customerAddress").val(rCmbC.address);
+    $("#customerSalary").val(rCmbC.salary);
+});
