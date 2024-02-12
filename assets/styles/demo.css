@@ -26,3 +26,38 @@
     width: 260px;
     text-transform: none;
 }
+
+.tim-row {
+    padding-top: 60px;
+}
+
+.tim-row h3 {
+    margin-top: 0;
+}
+
+.offline-doc .page-header {
+    display: flex;
+    align-items: center;
+}
+
+.offline-doc .footer {
+    position: absolute;
+    width: 100%;
+    background: transparent;
+    bottom: 0;
+    color: #fff;
+    z-index: 1;
+}
+
+@media all and (min-width: 992px) {
+    .sidebar .nav>li.active-pro {
+        position: absolute;
+        width: 100%;
+        bottom: 10px;
+    }
+}
+
+.card.card-upgrade .card-category {
+    max-width: 530px;
+    margin: 0 auto;
+}
